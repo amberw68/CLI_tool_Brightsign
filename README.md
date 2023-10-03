@@ -4,6 +4,26 @@
 
 A simple command-line interface application developed in Python that fetches and displays the geolocation of an IP address using the IPStack API.
 
+### API Request:
+
+- The function get_location(ip, api_key) constructs an API request URL using the provided IP address.
+- Utilizing the requests library, it sends an HTTP GET request to the IPStack API with the user's API key as a parameter.
+
+### Response Handling:
+
+- It checks the HTTP status code to ensure the request was successful (status_code == 200). If unsuccessful, it outputs an error message with the received status code.
+- If successful, it parses the JSON response to extract and return the latitude and longitude values. If these values are not present, it returns None.
+
+### CL Interaction:
+
+- It checks the valid argument input (target IP address)
+- It retrieves the IPStack API key from the pre-set env var to avoid hard-coding caused security concern
+
+### Output:
+
+- The latitude and longitude are printed to the std output in a readable format. 
+- If the not location information is not in JSON data, the error message would be displayed. 
+
 ## Prerequisites
 
 - Python 3.x (tested on Python 3.6.9)
