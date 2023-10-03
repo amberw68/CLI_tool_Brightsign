@@ -9,12 +9,18 @@ def get_location(ip, api_key):
     params = {'access_key': api_key}
     # HTTP GET request to the API, passing params, store response
     response = requests.get(base_url, params=params)
-    # Pase the HTTP response in JSON and save it as data
-    data = response.json()
-    # Check the latitude and longitude presences
-    if "latitude" in data and "longitude" in data:
-        return data["latitude"], data["longitude"]
-    else:
+    # Check HTTP status if successful
+    if response.status_code == 200:
+        # Pase the HTTP response in JSON and save it as data
+        data = response.json()
+        # Check the latitude and longitude presences
+        if "latitude" in data and "longitude" in data:
+            return data["latitude"], data["longitude"]
+        else:
+            return None, None
+    # Handle different types of error here
+    else : 
+        print(f"Error: Received status code {response.status_code}")
         return None, None
 
 # for the safety issue, 
