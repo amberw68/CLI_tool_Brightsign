@@ -27,7 +27,7 @@ export IPSTACK_API_KEY='your_api_key'
 ## Usage
 Replace [IP_ADDRESS] with target ip address.
 ```bash
-python3 get_location.py [IP_ADDRESS]
+python3 get_loc.py [IP_ADDRESS]
 ```
 
 ## Docker Usage
